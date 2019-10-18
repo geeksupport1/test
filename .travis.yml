@@ -4,3 +4,13 @@ services:
 script:
   - docker build -t geeksupport/node .
   - docker images geeksupport/node
+
+before_deploy:
+  - docker login -u geeksupport -p Eddieluc123?
+
+deploy:
+  provider: script
+  script: docker push geeksupport/node
+  on:
+    branch: master
+    
